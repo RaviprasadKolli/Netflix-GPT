@@ -1,11 +1,8 @@
 import React from "react";
+import Body from "./components/Body";
 
 function App() {
-  return (
-    <div>
-      <h1 className="text-green-700 text-center">Ravi</h1>
-    </div>
-  );
+  return <Body />;
 }
 
 export default App;
