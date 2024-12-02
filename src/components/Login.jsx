@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 
 const Login = () => {
+  const [isSignInForm, setIsSignInForm] = useState(true);
+
+  const toggleSignInForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
   return (
     <div>
       <div className="absolute">
@@ -13,7 +18,16 @@ const Login = () => {
         />
       </div>
       <form className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
-        <h1 className="font-bold text-3xl p-4">Sign In</h1>
+        <h1 className="font-bold text-3xl p-4">
+          {isSignInForm ? "Sign In" : "Sign Up"}
+        </h1>
+        {!isSignInForm && (
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="p-3 my-4 w-full rounded-md bg-gray-600"
+          />
+        )}
         <input
           type="email"
           placeholder="Enter your Email"
@@ -25,11 +39,17 @@ const Login = () => {
           className="p-3 my-4 w-full rounded-md bg-gray-600"
         />
         <button className="p-4 my-4 bg-red-600 w-full rounded-md">
-          Sign In
+          {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <input type="checkbox" />
         <span className="p-1">Remember Me</span>
         <span className="p-9">Need Help.?</span>
+        <p className="p-4">
+          {isSignInForm ? "New to Netflix ==>" : "Already User ==>"}
+          <span onClick={toggleSignInForm} className="ml-2 cursor-pointer">
+            {isSignInForm ? "Sign Up.!" : "Sign In.!"}
+          </span>
+        </p>
       </form>
     </div>
   );
